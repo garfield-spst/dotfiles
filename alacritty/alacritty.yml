@@ -1,0 +1,93 @@
+## Set environment variables
+env:
+  TERM: alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+## Background opacity
+background_opacity: .50 
+
+## Cursor
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
+  unfocused_hollow: true
+
+## Live config reload
+live_config_reload: true
+
+colors:
+  cursor:
+    text: "#fefff2"
+    cursor: "#18AF8D"
+
+  selection:
+    text: "#b5b5b5"
+    background: "#18354f"
+
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xffffff'
+
+  # Normal colors
+  normal:
+    black:   '0x252525'
+    red:     '0xef6769'
+    green:   '0xa6e22e'
+    yellow:  '0xfd971f'
+    blue:    '0x6495ed'
+    magenta: '0xdeb887'
+    cyan:    '0xb0c4de'
+    white:   '0xdbdcdc'
+
+  # Bright colors
+  bright:
+    black:   '0x454545'
+    red:     '0xfc7ca5'
+    green:   '0xb6e354'
+    yellow:  '0xfd971f'
+    blue:    '0x87ceeb'
+    magenta: '0x996600'
+    cyan:    '0x87ceeb'
+    white:   '0xfdfdfd'
+
+
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: "Source Code Pro Medium"
+    #style: Regular
+
+  # Bold font face
+  bold:
+    family: "Source Code Pro Medium"
+    #style: Bold
+
+  # Italic font face
+  italic:
+    family: "Source Code Pro Medium"
+    #style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    family: "Source Code Pro Medium"
+    #style: Bold Italic
+
+  # Point size
+  size: 13
+
+  # Offset
+  #offset:
+  #  x: 0
+  #  y: 0
+
+  # Glyph offset
+  #glyph_offset:
+  #  x: 0
+  #  y: 0

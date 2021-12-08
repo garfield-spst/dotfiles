@@ -1,0 +1,82 @@
+# Take a screenshot
+Print 
+   flameshot gui
+
+# Logout Tool
+#super + x
+#bash ~/.bin/logout-tool
+
+# Alacritty (terminal)
+super + Return
+    alacritty
+
+# Dmenu
+super + d
+      dmenu_run 
+
+# Opens browser
+super + w
+    waterfox-g4
+
+# Youtube 
+super + y
+      bash  /home/sp/.config/dmscripts/youtube.sh
+
+# btop++ process viewer
+super + b
+      alacritty -e btop
+
+# Quickly record your screen with ffmpeg
+#super + r
+#/opt/xelph-dwm-git/scripts/record-screen.sh
+# to record from the webcam set your input file to /dev/video<filenumber>
+
+# Set wallpaper with feh and sxiv
+#super + shift + w
+#/opt/xelph-dwm-git/scripts/setwallpaper.sh
+
+# Discord Canary
+super + shift + d
+	discord-canary
+	
+# Reload your sxhkd keybinds
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+# Quickly edit your configs
+#super + shift + c
+#/opt/xelph-dwm-git/scripts/configselector
+
+# Get a quick manual of all the installed programs in your machine
+#ctrl + m
+#bash /opt/xelph-dwm-git/scripts/mansplain
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioStop
+	playerctl stop
+
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+
+XF86AudioLowerVolume
+	amixer set Master 5%-
+
+XF86AudioMute
+	amixer -D pulse set Master 1+ toggle
+
+# Lock your computer
+#super + ctrl + l
+#betterlockscreen -l blur
+
+# Pixel color picker
+super + c
+     /home/sp/.config/dmscripts/color.sh
+
