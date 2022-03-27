@@ -1,13 +1,12 @@
 ## Set environment variables
-env:
-  TERM: alacritty
 
 scrolling:
   history: 10000
   multiplier: 3
 
 ## Background opacity
-background_opacity: .50 
+window:
+    opacity: 0.32
 
 ## Cursor
 cursor:
@@ -22,8 +21,8 @@ live_config_reload: true
 
 colors:
   cursor:
-    text: "#fefff2"
-    cursor: "#18AF8D"
+    text: '0x1E1D2F'
+    cursor: '0xF5E0DC'
 
   selection:
     text: "#b5b5b5"
@@ -61,26 +60,26 @@ colors:
 font:
   # Normal (roman) font face
   normal:
-    family: "Source Code Pro Medium"
+    family: "Monaco"
     #style: Regular
 
   # Bold font face
   bold:
-    family: "Source Code Pro Medium"
+    family: "Monaco"
     #style: Bold
 
   # Italic font face
   italic:
-    family: "Source Code Pro Medium"
+    family: "Monaco"
     #style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: "Source Code Pro Medium"
+    family: "Monaco"
     #style: Bold Italic
 
   # Point size
-  size: 13
+  size: 16
 
   # Offset
   #offset:
