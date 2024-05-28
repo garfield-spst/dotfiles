@@ -1,0 +1,36 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="site" cwd="~/Blog/garfield.github.io/"{
+      pane split_direction="Vertical" {
+        pane size="20%" {
+          command "nnn"
+          args "." "-G" "-s" "blog"
+        }
+        pane size="80%" {
+          command "nvim"
+          focus true
+        }
+      }
+    }
+    tab name="zola" {
+      pane {
+        name "zola"
+        cwd "~/Blog/garfield.github.io/"
+        command "zola"
+        args "serve"
+      }
+    }
+    tab name="btop" {
+      pane {
+        name "btop"
+        command "btop"
+      }
+    }
+}
+session_name "blog"
+attach_to_session true

@@ -1,0 +1,37 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="nvim" {
+      pane {
+        name "nvim"
+        cwd "~/.config/nvim"
+        command "nvim"
+      }
+    }
+    tab name="scripts" {
+      pane {
+        name "nvim"
+        cwd "~/.config/scripts"
+        command "nvim"
+      }
+    }
+    tab name="zellij" {
+      pane {
+        name "zellij"
+        cwd "~/.config/zellij"
+        command "nvim"
+      }
+    }
+    tab name="btop" {
+      pane {
+        name "btop"
+        command "btop"
+      }
+    }
+}
+session_name "dotfiles"
+attach_to_session false

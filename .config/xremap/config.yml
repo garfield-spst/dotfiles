@@ -1,0 +1,4 @@
+keymap:
+  - name: Global
+    remap:
+      Capslock: C-b

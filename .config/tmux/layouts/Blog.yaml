@@ -1,0 +1,13 @@
+session_name: Blog 💻
+windows:
+  - window_name: content
+    layout: tiled
+    shell_command_before:
+      - cd ~/Blog/garfield.github.io/
+      - nvim
+    # focus: true
+  - window_name: server
+    layout: tiled
+    shell_command_before:
+      - cd ~/Blog/garfield.github.io/
+      - zola serve

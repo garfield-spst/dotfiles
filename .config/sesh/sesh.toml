@@ -1,0 +1,31 @@
+[default_session]
+startup_command = "nvim"
+
+# [[session]]
+# name = "spotify"
+# path = "~/git_repos/dotfiles/spotify-player"
+# startup_script = "~/git_repos/dotfiles/sesh/bin/spotify.sh"
+
+[[session]]
+name = "Dotfiles 🏡"
+path = "~/.config/"
+startup_command = "tmuxp load -ay ~/.config/tmux/layouts/Dotfiles.yaml"
+# tmuxp = "~/.config/tmux/layouts/dotfiles.yaml"
+
+[[session]]
+name = "Blog 💻"
+startup_command = "tmuxp load -ay ~/.config/tmux/layouts/Blog.yaml"
+# tmuxp = "load ~/.config/tmux/layouts/Blog.yaml -y"
+
+# [[session]]
+# name = "second brain 🧠"
+# path = "~/c/second-brain"
+# startup_command = "nvim +ObsidianToday"
+
+# [[session]]
+# path = "~/c/joshmedeski.com"
+# startup_script = "~/.config/sesh/scripts/node_dev"
+# or
+# tmuxp = "~/.config/tmux/tmuxp/joshmedeski.com.yml"
+# or
+# tmuxinator = "~/.config/tmux/tmuxinator/joshmedeski.com.yml"

@@ -1,0 +1,29 @@
+session_name: Dotfiles
+windows:
+  - window_name: qtile
+    layout: tiled
+    shell_command_before:
+      - cd ~/.config/qtile/
+      - nvim
+  - window_name: nvim
+    layout: tiled
+    shell_command_before:
+      - cd ~/.config/nvim/
+      - nvim
+  - window_name: tmux
+    layout: tiled
+    shell_command_before:
+      - cd ~/.config/tmux/
+      - nvim
+  - window_name: scripts
+    layout: tiled
+    shell_command_before:
+      - cd ~/.config/scripts/
+  - window_name: starship
+    layout: tiled
+    shell_command_before:
+      - nvim ~/.config/starship.toml
+  - window_name: btop
+    layout: tiled
+    shell_command_before:
+      - btop
