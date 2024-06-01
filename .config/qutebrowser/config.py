@@ -58,12 +58,15 @@ c.tabs.show = "multiple"
 
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
+    "gg": "https://www.google.com/search?q={}",
     "aw": "https://wiki.archlinux.org/?search={}",
     "hoog": "https://hoogle.haskell.org/?hoogle={}",
     "re": "https://www.reddit.com/r/{}",
     "wiki": "https://en.wikipedia.org/wiki/{}",
     "yt": "https://www.youtube.com/results?search_query={}",
 }
+
+c.qt.highdpi = True
 
 c.colors.completion.fg = ["#9cc4ff", "white", "white"]
 
@@ -133,17 +136,19 @@ c.colors.tabs.pinned.selected.even.bg = "#282c34"
 
 c.fonts.default_family = '"JetBrainsMono"'
 
-c.fonts.default_size = "15pt"
+c.fonts.default_size = "18pt"
 
-c.fonts.completion.entry = '15pt "JetBrainsMono"'
+# c.fonts.web.size.default = "26pt" # doesn't work
 
-c.fonts.debug_console = '15pt "JetBrainsMono"'
+c.fonts.completion.entry = '16pt "JetBrainsMono"'
+
+c.fonts.debug_console = '16pt "JetBrainsMono"'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = '14pt "JetBrainsMono"'
+c.fonts.prompts = '15pt "JetBrainsMono"'
 
-c.fonts.statusbar = '15pt "JetBrainsMono"'
+c.fonts.statusbar = '16pt "JetBrainsMono"'
 
 # Bindings to use dmenu rather than qutebrowser's builtin search.
 # config.bind('o', 'spawn --userscript dmenu-open')
@@ -175,8 +180,8 @@ config.bind(
     'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""',
 )
 config.bind(
-    ",sd",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""',
+    ",s",
+    ':jseval document.querySelector("video, audio").playbackRate = parseFloat(prompt("Enter playback speed"))',
 )
 config.bind(
     ",sl",

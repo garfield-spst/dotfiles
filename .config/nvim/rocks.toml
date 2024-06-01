@@ -33,6 +33,9 @@ nvim-dap-ui = "4.0.0"
 nvim-dap-go = "scm"
 "nui.nvim" = "0.3.0"
 "noice.nvim" = "3.0.2"
+fzf-lua = "0.0.1294"
+# "incline.nvim" = "0.0.1"
+# "tabby.nvim" = "2.4.1"
 # "neo-tree.nvim" = "3.26"
 
 [plugins."oil.nvim" ]

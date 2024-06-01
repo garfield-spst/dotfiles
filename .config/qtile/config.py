@@ -18,7 +18,6 @@ modifier_keys = {
     "C": "control",
 }
 myTerm = "alacritty"
-myBrowser = "brave"
 mod = "mod4"
 
 # KeyMaps
@@ -27,10 +26,13 @@ keys = [
     KeyZ("M-S-r", lazy.reload_config(), desc="Reload the config"),
     KeyZ("M-S-b", lazy.hide_show_bar(), desc="Hides the bar"),
     KeyZ("M-<Return>", lazy.spawn(myTerm), desc="Terminal"),
-    KeyZ("M-b", lazy.spawn(myBrowser), desc="Web Browser"),
     KeyZ("M-<Space>", lazy.next_layout(), desc="Toggle between layouts"),
     KeyZ("M-<Tab>", lazy.screen.toggle_group(), desc="Move to the last visited group"),
-    KeyZ("M-S-w", lazy.spawn("sh /home/sp/.config/scripts/wall.sh"), desc="Change Wallpaper"),
+    KeyZ(
+        "M-S-w",
+        lazy.spawn("sh /home/sp/.config/scripts/wall.sh"),
+        desc="Change Wallpaper",
+    ),
     KeyZ(
         "M-r",
         lazy.run_extension(
@@ -116,28 +118,10 @@ keys = [
     Key([], "F12", lazy.spawn("pamixer -ui 5"), desc="Increase volume"),
     KeyChord(
         [mod],
-        "d",
+        "b",
         [
-            Key([], "t", lazy.spawn("sh ~/.local/bin/tmux-windows"), desc="List all dmscripts"),
-            Key([], "a", lazy.spawn("dm-sounds -r"), desc="Choose ambient sound"),
-            Key([], "b", lazy.spawn("dm-setbg -r"), desc="Set background"),
-            Key([], "c", lazy.spawn("dtos-colorscheme -r"), desc="Choose color scheme"),
-            Key(
-                [],
-                "e",
-                lazy.spawn("dm-confedit -r"),
-                desc="Choose a config file to edit",
-            ),
-            Key([], "i", lazy.spawn("dm-maim -r"), desc="Take a screenshot"),
-            Key([], "k", lazy.spawn("dm-kill -r"), desc="Kill processes "),
-            Key([], "m", lazy.spawn("dm-man -r"), desc="View manpages"),
-            Key([], "n", lazy.spawn("dm-note -r"), desc="Store and copy notes"),
-            Key([], "o", lazy.spawn("dm-bookman -r"), desc="Browser bookmarks"),
-            Key([], "p", lazy.spawn("rofi-pass"), desc="Logout menu"),
-            Key([], "q", lazy.spawn("dm-logout -r"), desc="Logout menu"),
-            Key([], "r", lazy.spawn("dm-radio -r"), desc="Listen to online radio"),
-            Key([], "s", lazy.spawn("dm-websearch -r"), desc="Search various engines"),
-            Key([], "t", lazy.spawn("dm-translate -r"), desc="Translate text"),
+            Key([], "q", lazy.spawn("qutebrowser"), desc="Launch qutebrowser"),
+            Key([], "b", lazy.spawn("brave"), desc="Launch brave browser"),
         ],
     ),
     KeyChord(
@@ -149,15 +133,6 @@ keys = [
             Key([], "3", lazy.group["scratchpad"].dropdown_toggle("term3")),
             Key([], "y", lazy.group["scratchpad"].dropdown_toggle("yazi")),
             Key([], "b", lazy.group["scratchpad"].dropdown_toggle("qute")),
-        ],
-    ),
-    KeyChord(
-        [mod],
-        "t",
-        [
-            Key([], "s", lazy.group["scratchpad"].dropdown_toggle("tmux-script")),
-            # Key([], "w", lazy.spawn("sh ~/.config/scripts/wall.sh"), desc="Change Wallpaper"),
-            # Key([], "r", lazy.spawn("sh ~/.config/scripts/wall.sh"), desc="Change Wallpaper"),
         ],
     ),
     KeyChord(
@@ -191,22 +166,25 @@ group_names = [
     "5",
     "6",
     "7",
+    "8",
 ]
 
 group_labels = [
-    " 일 ",
-    " 이 ",
-    " 삼 ",
-    " 사 ",
-    " 오 ",
-    " 육 ",
-    " 칠 ",
+    "  ",
+    "󰈹 ",
+    "󰊯 ",
+    " ",
+    " ",
+    "󰨜 ",
+    "󰒋 ",
+    " ",
 ]
 
 group_layouts = [
     "Tile",
     "Monadtall",
     "Tile",
+    "Monadtall",
     "Monadtall",
     "Monadtall",
     "Monadtall",
@@ -285,22 +263,14 @@ groups.append(
                 opacity=1,
             ),
             DropDown(
-                "tmux-script",
-                "kitty --class=tmux-script -e 'sh ~/.config/scripts/tmux-switch.sh'",
-                width=0.4,
-                height=0.4,
-                x=0.1,
-                y=0.1,
-                opacity=1,
-            ),
-            DropDown(
                 "qute",
                 "qutebrowser",
-                width=0.7,
-                height=0.7,
-                x=0.16,
+                width=0.40,
+                height=0.98,
+                x=0.595,
                 y=0.01,
                 opacity=1,
+                on_focus_lost_hide=False,
             ),
         ],
     )
@@ -323,7 +293,7 @@ layouts = [
         add_on_top=False,
         border_width=2,
         margin=0,
-        ratio=0.60,
+        ratio=0.55,
         border_focus=colors[5],
         border_normal=colors[0],
     ),
@@ -564,6 +534,7 @@ floating_layout = layout.Floating(
         Match(wm_class="pinentry-gtk-2"),  # GPG key password entry
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(wm_class="toolbar"),  # toolbars
+        # Match(wm_class="qute"),  # qutebrowser
         Match(wm_class="Yad"),  # yad boxes
         Match(title="branchdialog"),  # gitk
         Match(title="Confirmation"),  # tastyworks exit box
@@ -591,5 +562,6 @@ wl_input_rules = None
 def start_once():
     home = os.path.expanduser("~")
     subprocess.call([home + "/.config/qtile/autostart.sh"])
+
 
 wmname = "LG3D"

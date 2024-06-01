@@ -55,11 +55,20 @@ keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
 -- keymap("n", "<leader>F", "<CMD>FZFDir<CR>", opts)
 
 -- Telescope Keymaps
-keymap("n", "<C-p>", ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", opts)
-keymap("n", "<leader>/", "<CMD>Telescope live_grep<CR>", opts)
-keymap("n", "<leader>\\", "<CMD>Telescope current_buffer_fuzzy_find<CR>", opts)
-keymap("n", "<leader>b", ":Telescope buffers <CR>", opts)
-keymap("n", "<leader>o", ":Telescope oldfiles <CR>", opts)
+-- keymap("n", "<C-p>", ":Telescope find_files follow=true no_ignore=true hidden=true<CR>", opts)
+-- keymap("n", "<leader>/", "<CMD>Telescope live_grep<CR>", opts)
+-- keymap("n", "<leader>\\", "<CMD>Telescope current_buffer_fuzzy_find<CR>", opts)
+-- keymap("n", "<leader>b", ":Telescope buffers <CR>", opts)
+-- keymap("n", "<leader>o", ":Telescope oldfiles <CR>", opts)
+-- keymap("n", "<leader>u", ":UndotreeToggle <CR>", opts)
+
+-- Fzf Lua Keymaps
+keymap("n", "<C-p>", "<CMD>FzfLua files<CR>", opts)
+keymap("n", "<leader>l", "<CMD>FzfLua blines<CR>", opts)
+keymap("n", "<leader>/", "<CMD>FzfLua lines<CR>", opts)
+keymap("n", "<leader>b", ":FzfLua buffers <CR>", opts)
+keymap("n", "<leader>o", ":FzfLua oldfiles <CR>", opts)
+keymap("n", "<F3>", ":FzfLua <CR>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle <CR>", opts)
 
 -- Nvim Dap Keymaps
@@ -75,7 +84,7 @@ keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
 
 -- Neo Tree Keymaps
 -- keymap("n", "<leader>n", "<CMD>NnnExplorer %:p:h<CR>", opts)
-keymap("n", "<leader>n", "<CMD>Neotree toggle left<CR>", opts)
+keymap("n", "<leader>n", "<CMD>SidebarNvimToggle<CR>", opts)
 -- keymap("n", "<leader>n", "<CMD>NvimTreeOpen<CR>", opts)
 
 -- Define key mappings to switch to specific buffers

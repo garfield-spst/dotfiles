@@ -12,21 +12,34 @@ local function isRecording()
 	end
 end
 
+local function buffs()
+	local result = {}
+	for _, val in ipairs(vim.fn.range(1, vim.fn.bufnr("$"))) do
+		if vim.fn.bufexists(val) == 1 and vim.fn.bufname(val) ~= "" then
+			local buffer_number = tostring(val)
+			local buffer_name = vim.fn.fnamemodify(vim.fn.bufname(val), ":t")
+			local buffer_icon = ""
+			table.insert(result, buffer_icon .. " " .. buffer_number .. ":" .. buffer_name .. " ")
+		end
+	end
+	return table.concat(result, "")
+end
+
 -- Customizations {{{
 local theme = {
 	aqua = "#7AB0DF",
 	bg = "NONE",
-	blue = "#5FB0FC",
-	cyan = "#70C0BA",
+	blue = "#6272A4",
+	cyan = "#7FBBB3",
 	darkred = "#FB7373",
-	fg = "#C7C7CA",
-	gray = "#222730",
-	green = "#79DCAA",
+	fg = "#D5C9AB",
+	gray = "#272E33",
+	green = "#A7C080",
 	lime = "#54CED6",
-	orange = "#FFD064",
+	orange = "#E69875",
 	pink = "#D997C8",
-	purple = "#C397D8",
-	red = "#F87070",
+	purple = "#D196B3",
+	red = "#ED8082",
 	yellow = "#FFE59E",
 }
 
@@ -53,7 +66,7 @@ local modes = setmetatable({
 	["no"] = "N",
 	["v"] = "V",
 	["V"] = "VL",
-	[""] = "VB",
+	-- [""] = "VB",
 	["s"] = "S",
 	["S"] = "SL",
 	[""] = "SB",
@@ -110,7 +123,7 @@ component.git_branch = {
 		bg = "bg",
 		style = "bold",
 	},
-	left_sep = "block",
+	left_sep = " ",
 	right_sep = "",
 }
 
@@ -247,13 +260,32 @@ component.vim_macro = {
 	right_sep = " ",
 }
 
+component.buffs = {
+	provider = function()
+		return buffs()
+	end,
+	hl = {
+		fg = "#D5C9AB",
+	},
+}
+
+component.buffer_name = {
+	provider = "file_info",
+	hl = {
+		fg = "fg",
+		bg = "bg",
+	},
+	left_sep = " ",
+	right_sep = " ",
+}
+
 component.total_lines = {
 	provider = function()
 		return "" .. vim.api.nvim_buf_line_count(0)
 		-- return " " .. vim.api.nvim_buf_line_count(0) .. " lines "
 	end,
 	hl = {
-		fg = "#7287fd",
+		fg = "#7FBBB3",
 	},
 	left_sep = " ",
 	-- right_sep = "block",
@@ -351,13 +383,14 @@ feline.setup({
 			},
 			{ -- middle
 				component.vim_macro,
+				component.lsp,
 				component.context,
 			},
 			{ -- right
-				component.file_type,
-				-- component.lsp,
 				-- component.separator,
+				-- component.buffs,
 				component.scroll_bar,
+				-- component.buffer_name,
 				component.total_lines,
 			},
 		},
@@ -365,4 +398,3 @@ feline.setup({
 	theme = theme,
 	vi_mode_colors = mode_theme,
 })
--- }}}

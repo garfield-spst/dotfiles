@@ -2,18 +2,34 @@ command_timeout = 10000
 
 add_newline = false
 
-format = '''⚡'''
+# format = '''⚡'''
+# format = "🦊$hostname "
+format = "⚯ ͛$hostname "
 
 right_format = '''$all'''
+
+[line_break]
+disabled = true
+
+[hostname]
+ssh_only = true
+format = '@[$hostname](bold yellow)'
+trim_at = "."
+disabled = false
 
 [directory]
 truncation_length = 1
 format = '[$path]($style)'
+truncation_symbol = " "
 read_only_style = '#E69875'
 style = 'bold #7FBBB3'
 
 [character]
 disabled = true
+
+[cmd_duration]
+min_time = 10_000
+format = " took [$duration]($style)"
 
 [aws]
 format = '[\[](bold blue)[$symbol($profile)(\($region\))(\[$duration[\]](bold blue))]($style)\]'
@@ -31,10 +47,6 @@ symbol = " "
 
 [cmake]
 format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
-
-[cmd_duration]
-format = '[\[](bold blue)[$duration]($style)[\]](bold blue)'
-disabled = true
 
 [cobol]
 format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
@@ -78,15 +90,41 @@ format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
 format = '[\[](bold blue)[$symbol$account(@$domain)(\($region\))]($style)[\]](bold blue)'
 
 [git_branch]
-format = " [$symbol$branch]($style)"
-style = "bold yellow"
+format = " [$symbol$branch]($style) "
+symbol = '🌱 '
+# truncation_length = 4
+truncation_symbol = ''
+# ignore_branches = ['master', 'main']
 
-[git_commit]
-commit_hash_length = 8
-style = "bold white"
+# ~/.config/starship.toml
 
 [git_state]
-format = ' [\($state( $progress_current of $progress_total)\)]($style)'
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = '🔖 '
+style = "bold white"
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+only_nonzero_diffs = true
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+disabled = true
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "⇡"
+behind = "[⇣${count}](bold dimmed blue)"
+diverged = "⇕${ahead_count}⇣${behind_count}"
+untracked = "[?${count}](bold blue)"
+modified ="[!${count}](bold yellow)"
+staged = "[+${count}](bold yellow)"
+renamed = "» ×${count}"
+deleted = "[×${count}](bold red)"
+format = "$all_status$ahead_behind"
 
 [golang]
 format = '[$symbol]($style)'
