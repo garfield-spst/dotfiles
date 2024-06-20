@@ -1,5 +1,6 @@
 import os
 import subprocess
+import re
 from libqtile import bar, hook, extension, layout, qtile
 from libqtile.config import Group, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
@@ -26,6 +27,7 @@ keys = [
     KeyZ("M-S-r", lazy.reload_config(), desc="Reload the config"),
     KeyZ("M-S-b", lazy.hide_show_bar(), desc="Hides the bar"),
     KeyZ("M-<Return>", lazy.spawn(myTerm), desc="Terminal"),
+    # KeyZ("M-d", lazy.spawn("copyq"), desc="Terminal"),
     KeyZ("M-<Space>", lazy.next_layout(), desc="Toggle between layouts"),
     KeyZ("M-<Tab>", lazy.screen.toggle_group(), desc="Move to the last visited group"),
     KeyZ(
@@ -171,13 +173,13 @@ group_names = [
 
 group_labels = [
     "  ",
-    "󰈹 ",
-    "󰊯 ",
-    " ",
-    " ",
-    "󰨜 ",
-    "󰒋 ",
-    " ",
+    " 󰈹 ",
+    " 󰊯 ",
+    "  ",
+    "  ",
+    " 󰨜 ",
+    " 󰒋 ",
+    "  ",
 ]
 
 group_layouts = [
@@ -191,14 +193,46 @@ group_layouts = [
     "Monadtall",
 ]
 
+group_matches = {
+    "1": ["alacritty"],
+    "2": ["brave"],
+    "3": ["qutebrowser"],
+    "4": ["thunar"],
+    "5": ["thunderbird"],
+}
+#             "1",
+#             Match(wm_class=re.compile(r"^(alacritty)$")),
+#         ),
+#         (
+#             "2",
+#             Match(wm_class=re.compile(r"^(brave)$")),
+#         ),
+#         (
+#             "3",
+#             Match(wm_class=re.compile(r"^(qutebrowser)$")),
+#         ),
+#         (
+#             "4",
+#             Match(wm_class=re.compile(r"^(thunar)$")),
+#         ),
+#         (
+#             "5",
+#             Match(wm_class=re.compile(r"^(thunderbird)$")),
+#         ),
+#
+
 for i in range(len(group_names)):
+    matches = [Match(wm_class=group_matches.get(group_names[i], []))]
     groups.append(
         Group(
             name=group_names[i],
             layout=group_layouts[i].lower(),
             label=group_labels[i],
-        )
+            matches=matches,
+        ),
     )
+
+# groups.app
 
 for i in groups:
     keys.extend(
@@ -343,26 +377,27 @@ def init_widgets_list():
             ],
         ),
         widget.CurrentLayoutIcon(
-            background=colors[0],
-            foreground=colors[2],
+            background="#1E1E21",
+            foreground=colors[1],
             padding=8,
             scale=0.65,
         ),
         widget.GroupBox(
-            fontsize=22,
-            margin_y=2,
-            margin_x=5,
+            fontsize=25,
+            margin_y=3,
+            margin_x=0.2,
             padding_y=2,
+            # background="#1E1E21",
             padding_x=1,
             borderwidth=3,
             rounded=True,
             disable_drag=True,
             hide_unused=True,
-            active=colors[5],
-            highlight_color=colors[0],
+            active=colors[1],
+            highlight_color="#1E1E21",
             highlight_method="line",
             this_current_screen_border=colors[5],
-            this_screen_border=colors[5],
+            this_screen_border=colors[0],
             other_current_screen_border=colors[0],
             other_screen_border=colors[0],
         ),
@@ -392,7 +427,7 @@ def init_widgets_list():
         ),
         widget.CheckUpdates(
             foreground=colors[0],
-            background=colors[5],
+            background=colors[1],
             colour_have_updates=colors[0],
             colour_no_updates=colors[0],
             display_format=" {updates} ",
@@ -405,12 +440,12 @@ def init_widgets_list():
         widget.CPU(
             format=" {load_percent} ",
             foreground=colors[0],
-            background=colors[1],
+            background=colors[5],
             **powerline,
         ),
         widget.Memory(
             foreground=colors[0],
-            background=colors[5],
+            background=colors[1],
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(myTerm + " -e btop")},
             format=" {MemUsed:.0f}{mm} ",
             measure_mem="G",
@@ -418,20 +453,20 @@ def init_widgets_list():
         ),
         widget.Volume(
             foreground=colors[0],
-            background=colors[1],
+            background=colors[5],
             fmt=" {} ",
             **powerline,
         ),
         widget.Clock(
             foreground=colors[0],
-            background=colors[5],
+            background=colors[1],
             format=" %I:%M ",
             **powerline,
         ),
         # widget.Spacer(length=12),
         widget.Pomodoro(
             color_active=colors[0],
-            background=colors[1],
+            background=colors[5],
             color_break=colors[0],
             color_inactive=colors[0],
             fmt=" <b>{}</b> ",
@@ -534,9 +569,12 @@ floating_layout = layout.Floating(
         Match(wm_class="pinentry-gtk-2"),  # GPG key password entry
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(wm_class="toolbar"),  # toolbars
+        Match(wm_class="diodon"),
+        Match(wm_class="copyq"),
         # Match(wm_class="qute"),  # qutebrowser
         Match(wm_class="Yad"),  # yad boxes
         Match(title="branchdialog"),  # gitk
+        Match(title="diodon"),
         Match(title="Confirmation"),  # tastyworks exit box
         Match(title="Qalculate!"),  # qalculate-gtk
         Match(title="pinentry"),  # GPG key password entry
@@ -562,6 +600,11 @@ wl_input_rules = None
 def start_once():
     home = os.path.expanduser("~")
     subprocess.call([home + "/.config/qtile/autostart.sh"])
+
+
+@hook.subscribe.client_managed
+def show_window(window):
+    window.group.cmd_toscreen()
 
 
 wmname = "LG3D"

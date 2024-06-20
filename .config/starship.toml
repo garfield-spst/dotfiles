@@ -3,8 +3,9 @@ command_timeout = 10000
 add_newline = false
 
 # format = '''⚡'''
-# format = "🦊$hostname "
-format = "⚯ ͛$hostname "
+format = "🦊$hostname "
+# format = "⚯ ͛$hostname "
+# format = "⚡$hostname"
 
 right_format = '''$all'''
 
@@ -13,7 +14,7 @@ disabled = true
 
 [hostname]
 ssh_only = true
-format = '@[$hostname](bold yellow)'
+format = '@[$hostname](bold yellow) '
 trim_at = "."
 disabled = false
 
@@ -43,7 +44,7 @@ format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
 
 [c]
 format = '[$symbol]($style)'
-symbol = " "
+symbol = "  "
 
 [cmake]
 format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
@@ -135,8 +136,8 @@ format = '[\[](bold blue)[$symbol]($style)[\]](bold blue)'
 symbol = " "
 
 [haskell]
-format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'
-symbol = " "
+format = '[$symbol]($style)'
+symbol = "  "
 
 [haxe]
 format = '[\[](bold blue)[$symbol($version)]($style)[\]](bold blue)'

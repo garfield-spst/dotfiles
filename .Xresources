@@ -1,0 +1,55 @@
+! Cursor theme
+Xcursor.theme: 		volantes_cursors
+Xcursor.size: 		30
+
+! st terminal config
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.autohint:	0
+Xft.hintstyle:	hintslight
+Xft.rgba:	rgb
+Xft.lcdfilter:	lcddefault
+
+st.font:        JetBrainsMono Nerd Font:style:Medium:pixelsize=25
+
+! window padding
+st.borderpx: 2
+
+!- 0.1 to 0.9 = transparency
+st.alpha: 1.0
+
+*background: #272e33
+*foreground: #d5c9ab
+/**cursorColor: #45475a*/
+
+! Black + DarkGrey
+*color0:  #7c8377
+*color8:  #7c8377
+
+! DarkRed + Red
+*color1:  #e69875
+*color9:  #e69875
+
+! DarkGreen + Green
+*color2:  #a7c080
+*color10: #a7c080
+
+! DarkYellow + Yellow
+*color3:  #dbbc7f
+*color11: #dbbc7f
+
+! DarkBlue + Blue
+*color4:  #7fbbb3
+*color12: #7fbbb3
+
+! DarkMagenta + Magenta
+*color5:  #d196b3
+*color13: #d196b3
+
+! DarkCyan + Cyan
+*color6:  #83c092
+*color14: #83c092
+
+! LightGrey + White
+*color7:  #d5c9ab
+*color15: #d5c9ab

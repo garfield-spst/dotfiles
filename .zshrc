@@ -41,6 +41,7 @@ alias zj="zellij"
 alias tp="tmuxp"
 alias ts="sh ~/.config/scripts/tmux-switch.sh"
 alias fd='fd --exclude={.git,.cache,.local,.oh-my-zsh,.npm,.cargo,.rustup,go,walls,Downloads}'
+alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
 
 # ZSH Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -53,3 +54,6 @@ export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview'
 export NNN_COLORS='1234'
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 # export NNN_FCOLORS='0000E631000000000000000'
+
+# Created by `pipx` on 2024-06-06 05:51:48
+export PATH="$PATH:/home/sp/.local/bin"
