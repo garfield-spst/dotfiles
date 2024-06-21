@@ -3,12 +3,21 @@
 	"position": "bottom",
 
 	"modules-left": [
-		"custom/arrow10",
+		"clock#date",
+		"custom/arrow12",
+		"custom/arrow11",
+		"custom/arrow13",
 		"hyprland/submap",
 		"hyprland/workspaces",
 	],
 
+  "modules-center": [
+    "custom/weather",
+    "custom/pomodoro",
+  ],
+  
 	"modules-right": [
+    "tray",
 		"custom/arrow9",
 		"pulseaudio",
 		"custom/arrow8",
@@ -18,29 +27,22 @@
 		"custom/arrow6",
 		"cpu",
 		"custom/arrow5",
-		"temperature",
 		"custom/arrow4",
-		"battery",
 		"custom/arrow3",
-		"sway/language",
-		"custom/arrow2",
-		"tray",
-		"clock#date",
-		"custom/arrow1",
-		"clock#time"
+		"clock#time",
 	],
 
 	// Modules
 
 	"clock#time": {
 		"interval": 10,
-		"format": "{:%I:%M}",
+		"format": "{:%I:%M %p}",
 		"tooltip": false
 	},
 
 	"clock#date": {
 		"interval": 20,
-		"format": "{:%e %b %Y}",
+		"format": "{:%e %b}",
 		"tooltip": false
 		//"tooltip-format": "{:%e %B %Y}"
 	},
@@ -76,7 +78,7 @@
 	},
 
 	"hyprland/submap": {
-		"format": "{}",
+		//"format": "{}",
 		"tooltip": false
 	},
 
@@ -131,9 +133,29 @@
 	},
 
 	"tray": {
-		"icon-size": 18
-		//"spacing": 10
+		"icon-size": 24,
+		"spacing": 10,
 	},
+
+  "custom/weather": {
+    "exec": "python ~/dotfiles/scripts/weather.py",
+    "restart-interval": 300,
+    "return-type": "json",
+    "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)"
+    // "format-alt": "{alt}",
+  },
+
+  "custom/pomodoro": {
+	  "format": " {}",
+	  "return-type": "json",
+	  "format-icons": {
+		  "work": "󰔟",
+		  "break": "",
+	  },
+	  "exec": "waybar-module-pomodoro",
+	  "on-click": "waybar-module-pomodoro toggle",
+	  "on-click-right": "waybar-module-pomodoro reset",
+  },
 
 	"custom/arrow1": {
 		"format": "",
@@ -181,6 +203,21 @@
 	},
 
 	"custom/arrow10": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow11": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow12": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow13": {
 		"format": "",
 		"tooltip": false
 	}

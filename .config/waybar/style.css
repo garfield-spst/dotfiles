@@ -35,7 +35,7 @@
 @define-color mode	@black;
 @define-color unfocused	@bg2;
 @define-color focused	@braqua;
-@define-color inactive	@purple;
+@define-color inactive	#a7c080;
 @define-color sound	@brpurple;
 @define-color network	@purple;
 @define-color memory	@braqua;
@@ -90,6 +90,7 @@
 
 /* Each critical module */
 #mode,
+/*#submap,*/
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
@@ -114,8 +115,13 @@
 
 /* Current sway mode (resize etc) */
 #mode {
-	color: @white;
-	background: @mode;
+	color: #d5c9ab;
+	background: transparent;
+}
+
+#submap {
+  color: #d5c9ab;
+  background: transparent;
 }
 
 /* Workspaces stuff */
@@ -123,14 +129,16 @@
 	/*font-weight: bold;*/
 	padding-left: 2pt;
 	padding-right: 2pt;
-	color: @white;
-	background: @unfocused;
+	color: #7c8377;
+	/*background: @unfocused;*/
+  background-color: transparent;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
-	color: @white;
-	background: @inactive;
+	color: @inactive;
+	/*background: @inactive;*/
+  background-color: transparent;
 }
 
 /* Active (on focused output) */
@@ -157,23 +165,23 @@
 }
 
 #pulseaudio {
-	background: @sound;
-	color: @black;
+	background: #a7c080;
+	color: #272e33;
 }
 
 #network {
-	background: @network;
-	color: @white;
+	background: #d5c9ab;
+	color: #272e33;
 }
 
 #memory {
-	background: @memory;
-	color: @black;
+	background: #a7c080;
+	color: #272e33;
 }
 
 #cpu {
-	background: @cpu;
-	color: @white;
+	background: #d5c9ab;
+	color: #272e33;
 }
 
 #temperature {
@@ -181,28 +189,52 @@
 	color: @black;
 }
 
-#language {
-	background: @layout;
-	color: @black;
-}
-
-#battery {
-	background: @battery;
-	color: @white;
-}
-
 #tray {
-	background: @date;
+	margin-left: 250pt;
+	background: transparent;
+  /*padding: 2pt;*/
 }
 
 #clock.date {
-	background: @date;
-	color: @white;
+	background: #272e33;
+	color: #d5c9ab;
 }
 
 #clock.time {
-	background: @time;
-	color: @black;
+	background: #272e33;
+	color: #d5c9ab;
+}
+
+#custom-weather.severe {
+    color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+    color: #e69875;
+}
+
+#custom-weather.clearNight {
+    color: #d5c9ab;
+}
+
+#custom-weather.cloudyFoggyDay, #custom-weather.cloudyFoggyNight {
+    color: #c2ddda;
+}
+
+#custom-weather.rainyDay, #custom-weather.rainyNight {
+    color: #5aaca5;
+}
+
+#custom-weather.showyIcyDay, #custom-weather.snowyIcyNight {
+    color: #d6e7e5;
+}
+
+#custom-weather.default {
+    color: #dbd9d8;
+}
+
+#custom-pomodoro {
+    color: #d5c9ab;
 }
 
 #custom-arrow1 {
@@ -213,54 +245,72 @@
 
 #custom-arrow2 {
 	font-size: 11pt;
-	color: @date;
-	background: @layout;
+	color: transparent;
+	background: #272e33;
 }
 
 #custom-arrow3 {
 	font-size: 11pt;
-	color: @layout;
-	background: @battery;
+	color: #272e33;
+	background: #7c8377;
 }
 
 #custom-arrow4 {
 	font-size: 11pt;
-	color: @battery;
-	background: @temp;
+	color: #7c8377;
+	background: #a7c080;
 }
 
 #custom-arrow5 {
 	font-size: 11pt;
-	color: @temp;
-	background: @cpu;
+	color: #a7c080;
+	background: #d5c9ab;
 }
 
 #custom-arrow6 {
 	font-size: 11pt;
-	color: @cpu;
-	background: @memory;
+	color: #d5c9ab;
+	background: #a7c080;
 }
 
 #custom-arrow7 {
 	font-size: 11pt;
-	color: @memory;
-	background: @network;
+	color: #a7c080;
+	background: #d5c9ab;
 }
 
 #custom-arrow8 {
 	font-size: 11pt;
-	color: @network;
-	background: @sound;
+	color: #d5c9ab;
+	background: #a7c080;
 }
 
 #custom-arrow9 {
 	font-size: 11pt;
-	color: @sound;
+	color: #a7c080;
 	background: transparent;
 }
 
 #custom-arrow10 {
 	font-size: 11pt;
-	color: @unfocused;
+	color: #a7c080;
+	background: #d5c9ab;
+}
+
+#custom-arrow11 {
+	font-size: 11pt;
+	color: #7c8377;
+	background: #a7c080;
+}
+
+#custom-arrow12 {
+	font-size: 11pt;
+	color: #272e33;
+	background: #7c8377;
+}
+
+#custom-arrow13 {
+	font-size: 11pt;
+	color: #a7c080;
 	background: transparent;
 }
