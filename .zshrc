@@ -39,6 +39,9 @@ alias gc="git clone"
 alias tx="tmux"
 alias zj="zellij"
 alias tp="tmuxp"
+alias zt="zathura"
+alias hp="hyprpm"
+alias nn="nnn -p"
 alias ts="sh ~/.config/scripts/tmux-switch.sh"
 alias fd='fd --exclude={.git,.cache,.local,.oh-my-zsh,.npm,.cargo,.rustup,go,walls,Downloads}'
 alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
@@ -49,8 +52,8 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 # NNN Configuration
-export NNN_FIFO=/tmp/nnn.fif
-export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview'
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
 export NNN_COLORS='1234'
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 # export NNN_FCOLORS='0000E631000000000000000'

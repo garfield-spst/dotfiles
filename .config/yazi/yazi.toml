@@ -1,5 +1,5 @@
 [manager]
-show_hidden = true
+show_hidden = false
 ration = [2, 0, 6]
 
 [opener]

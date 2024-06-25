@@ -1,0 +1,109 @@
+#set previewer ~/.config/lf/preview
+#set ratios 1:2:3
+#set cleaner ~/.config/lf/cleaner
+set previewer '~/dotfiles/.config/lf/scope'
+set ignorecase true
+set icons true
+#set preview true
+set ignorecase true
+#set drawbox true
+set dircounts true
+set info size:time
+set number true
+set relativenumber true
+
+# Archive bindings
+cmd unarchive ${{
+ atool --extract "$f" || echo "Unsupported format"
+  # case "$f" in
+  #     *.zip) unzip "$f" ;;
+  #     *.tar.gz) tar -xzvf "$f" ;;
+  #     *.tar.bz2) tar -xjvf "$f" ;;
+  #     *.tar) tar -xvf "$f" ;;
+  #     *) echo "Unsupported format" ;;
+  # esac
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  nvim $ans
+}}
+
+cmd zip %zip -r "$f.zip" "$fx"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+cmd git_branch ${{
+    git branch | fzf | xargs git checkout
+    pwd_shell=$(pwd | sed 's/\\/\\\\/g;s/"/\\"/g')
+    lf -remote "send $id updir"
+    lf -remote "send $id cd \"$pwd_shell\""
+}}
+map gb :git_branch
+map gp ${{clear; git pull --rebase || true; echo "press ENTER"; read ENTER}}
+map gs ${{clear; git status; echo "press ENTER"; read ENTER}}
+map gl ${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}
+
+cmd fzf_jump ${{
+  res="$(fd -H -d 3 |sed 's@^\./@@'|fzf --reverse --prompt 'Jump to location: ')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd z %{{
+	result="$(zoxide query --exclude $PWD "$@")"
+	lf -remote "send $id cd '$result'"
+}}
+
+cmd zi ${{
+	result="$(zoxide query -i)"
+	lf -remote "send $id cd '$result'"
+}}
+
+cmd on-cd &{{
+        zoxide add "$PWD"
+}}
+
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+map y
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map Y copy
+map P paste
+map <esc> quit
+map X cut
+map <enter> open
+map mf mkfile
+map md mkdir
+map ch chmod
+map br $vimv $fx
+map r rename
+map H top
+map L bottom
+map R reload
+map c clear
+map U unselect
+map <c-t> fzf_jump

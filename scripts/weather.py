@@ -8,14 +8,14 @@ import json
 weather_icons = {
     "sunnyDay": "滛",
     "clearNight": "望",
-    "cloudyFoggyDay": "",
-    "cloudyFoggyNight": "",
-    "rainyDay": "",
-    "rainyNight": "",
-    "snowyIcyDay": "",
-    "snowyIcyNight": "",
-    "severe": "",
-    "default": "",
+    "cloudyFoggyDay": " ",
+    "cloudyFoggyNight": " ",
+    "rainyDay": " ",
+    "rainyNight": " ",
+    "snowyIcyDay": " ",
+    "snowyIcyNight": " ",
+    "severe": " ",
+    "default": " ",
 }
 
 # get location_id

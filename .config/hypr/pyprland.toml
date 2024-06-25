@@ -1,0 +1,41 @@
+[pyprland]
+plugins = [
+  "scratchpads",
+  "fetch_client_menu",
+]
+
+[pyprland.variables]
+term = "foot"
+term_classed = "foot -a" # kitty uses --class
+
+[scratchpads.term1]
+animation = "fromTop"
+command = "[term_classed] dropterm"
+class = "dropterm"
+position = "20% 20%"
+size = "60% 60%"
+unfocus = "hide"
+
+[scratchpads.term2]
+animation = "fromRight"
+command = "[term_classed] dropterm2"
+class = "dropterm2"
+position = "59% 2%"
+size = "40% 92%"
+unfocus = "hide"
+
+[scratchpads.yazi]
+command = "foot -a yazi -e yazi"
+class = "yazi"
+unfocus = "hide"
+margin = 120
+size = "80% 75%"
+animation = "fromBottom"
+
+# [scratchpads.chrome]
+# animation = "fromTop"
+# command = "qutebrowser"
+# class = "qutebrowser"
+# position = "20% 2%"
+# size = "60% 60%"
+# unfocus = "hide"

@@ -7,14 +7,14 @@ decorations = "None" # "None", "Full", "Transparent"
 decorations_theme_variant = "Dark" # "Dark" or "Light"
 
 [env]
-term = "xterm-256color"
+# term = "xterm-256color"
 
 [font]
-normal.family = "ComicShannsMono Nerd Font"
-bold.family = "ComicShannsMono Nerd Font"
+normal.family = "JetBrainsMono Nerd Font"
+bold.family = "JetBrainsMono Nerd Font"
 #+Property: Header-args :tangle init.el
-italic.family = "ComicShannsMono Nerd Font"
-bold_italic.family = "ComicShannsMono Nerd Font"
+italic.family = "JetBrainsMono Nerd Font"
+bold_italic.family = "JetBrainsMono Nerd Font"
 size = 24.0
 
 # [shell]

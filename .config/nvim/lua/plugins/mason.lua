@@ -41,6 +41,9 @@ mason_lspconfig.setup({
 		bashls = function()
 			lspconfig.bashls.setup({})
 		end,
+		hyprls = function()
+			lspconfig.hyprls.setup({})
+		end,
 		yamlls = function()
 			lspconfig.yamlls.setup({
 				settings = {
