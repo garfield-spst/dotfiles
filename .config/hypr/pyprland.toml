@@ -1,7 +1,6 @@
 [pyprland]
 plugins = [
   "scratchpads",
-  "fetch_client_menu",
 ]
 
 [pyprland.variables]
@@ -31,11 +30,3 @@ unfocus = "hide"
 margin = 120
 size = "80% 75%"
 animation = "fromBottom"
-
-# [scratchpads.chrome]
-# animation = "fromTop"
-# command = "qutebrowser"
-# class = "qutebrowser"
-# position = "20% 2%"
-# size = "60% 60%"
-# unfocus = "hide"

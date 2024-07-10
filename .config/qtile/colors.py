@@ -7,7 +7,7 @@ EverForest = [
     ["#A7C080", "#A7C080"],  # color04
     ["#E69875", "#E69875"],  # color05
     ["#D196B3", "#D196B3"],  # color06
-    ["#ED8082", "#ED8080"],  # color07
+    ["#ED8080", "#ED8080"],  # color07
 ]
 
 GruvboxDark = [
